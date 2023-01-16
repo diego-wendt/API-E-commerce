@@ -13,4 +13,9 @@ export class ProdutoService {
     return await this.produtoRepository.find();
   }
 
+  async findById(id) {
+    return await this.produtoRepository.find({
+      where: { id: id },
+    });
+  }
 }
