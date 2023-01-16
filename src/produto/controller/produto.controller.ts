@@ -13,6 +13,7 @@ import { ProdutoService } from '../service/produto.service';
 export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
 
+  
   @Get()
   async findAllProducts() {
     return await this.produtoService.findAll();
