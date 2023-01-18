@@ -1,5 +1,4 @@
-import { type } from 'os';
-import { emit } from 'process';
+
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { EnumCategoria } from '../enum/enum.categoria';
 
