@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { EnumCategoria } from '../enum/enum.categoria';
 
-@Entity({ name: 'Produto' })
+@Entity({ name: 'produto' })
 export class ProdutoEntity {
   @PrimaryGeneratedColumn('increment')
   id: string;
@@ -9,12 +9,9 @@ export class ProdutoEntity {
   @Column()
   nome: string;
 
-  @Column()
+  @Column('float')
   valor: number;
 
   @Column()
   descricao: string;
-
-  @Column({ type: 'enum', enum: EnumCategoria })
-  categoria: EnumCategoria;
 }
