@@ -1,5 +1,8 @@
-
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { EnumCategoria } from '../enum/enum.categoria';
 
 @Entity({ name: 'produto' })
