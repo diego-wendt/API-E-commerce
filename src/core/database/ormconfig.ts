@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource({
     __dirname + './migrations/*{.ts,.js}',
     "dist/core/database/migrations/*{.ts,.js}"
   ],
-  synchronize: false,
+  synchronize: true,
   migrationsRun: false,
   migrationsTableName: 'history',
 });

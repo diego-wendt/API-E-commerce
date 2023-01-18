@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { JwtStrategy } from './core/auth/guards/strategy/jwt.strategy';
-import { PassportModule } from '@nestjs/passport';
+import { ProdutoModule } from './user/produto.module';
 require('dotenv-flow').config();
 @Module({
   imports: [
@@ -10,9 +9,9 @@ require('dotenv-flow').config();
       envFilePath: '.env',
       isGlobal: true,
     }),
-    PassportModule,
+    ProdutoModule,
   ],
   controllers: [],
-  providers: [JwtStrategy],
+  providers: [],
 })
 export class AppModule {}
