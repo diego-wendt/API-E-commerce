@@ -1,4 +1,5 @@
-import { IsString, IsNumberString, IsNumber } from 'class-validator';
+import { IsString, IsNumberString, IsNumber, IsEnum } from 'class-validator';
+import { EnumCategoria } from '../enum/enum.categoria';
 
 export class CreateProdutoDto {
   @IsString()
@@ -9,4 +10,7 @@ export class CreateProdutoDto {
 
   @IsString()
   descricao: string;
+
+  @IsEnum(EnumCategoria)
+  categoria:EnumCategoria
 }

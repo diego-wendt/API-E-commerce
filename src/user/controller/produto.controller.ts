@@ -19,12 +19,12 @@ export class ProdutoController {
     } catch (error) {}
   }
 
-  // @Get('/category/:categoria')
-  // async findByCategory(@Param() categoria: string) {
-  //   try {
-  //     return await this.produtoService.findByCategory(categoria);
-  //   } catch (error) {}
-  // }
+  @Get('/category/:categoria')
+  async findByCategory(@Param('categoria') categoria: string) {
+    try {
+      return await this.produtoService.findByCategory(categoria);
+    } catch (error) {}
+  }
 
   @Post()
   async createProduct(@Body() createProduct: CreateProdutoDto) {

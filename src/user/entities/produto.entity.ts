@@ -1,3 +1,5 @@
+import { type } from 'os';
+import { emit } from 'process';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { EnumCategoria } from '../enum/enum.categoria';
 
@@ -14,4 +16,7 @@ export class ProdutoEntity {
 
   @Column()
   descricao: string;
+
+  @Column({ type: 'enum', enum: EnumCategoria })
+  categoria: EnumCategoria;
 }
