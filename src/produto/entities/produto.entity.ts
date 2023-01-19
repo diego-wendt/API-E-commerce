@@ -1,9 +1,6 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { EnumCategoria } from '../enum/enum.categoria';
+import { CarrinhoEntity } from './carrinho.entity';
 
 @Entity({ name: 'produto' })
 export class ProdutoEntity {
@@ -21,4 +18,7 @@ export class ProdutoEntity {
 
   @Column({ type: 'enum', enum: EnumCategoria })
   categoria: EnumCategoria;
+
+  @ManyToMany(() => CarrinhoEntity, (produto)=>produto.cesta)
+  produtos: CarrinhoEntity[];
 }

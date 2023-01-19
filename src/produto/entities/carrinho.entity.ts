@@ -1,4 +1,11 @@
-import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ProdutoEntity } from './produto.entity';
 
 @Entity({ name: 'carrinho' })
@@ -9,7 +16,14 @@ export class CarrinhoEntity {
   @Column()
   usuario: string;
 
-  @ManyToMany(()=>ProdutoEntity)
+  @ManyToMany(() => ProdutoEntity, (cesta)=>cesta.produtos, { cascade: true })
   @JoinTable()
   cesta: ProdutoEntity[];
+
+  addProdutos(products: any[]) {
+    if (this.cesta == null) {
+      this.cesta = new Array<ProdutoEntity>();
+    }
+    this.cesta.push(...products);
+  }
 }
