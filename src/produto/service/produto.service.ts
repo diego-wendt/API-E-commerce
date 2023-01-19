@@ -31,15 +31,17 @@ export class ProdutoService {
 
   async createProduct(createProduct: CreateProdutoDto) {
     try {
-      console.log(createProduct);
       const product = this.produtoRepository.create();
       product.nome = createProduct.nome;
       product.valor = createProduct.valor;
       product.descricao = createProduct.descricao;
       product.categoria = parseInt(EnumCategoria[createProduct.categoria]);
       const savedProduct = await this.produtoRepository.save(product);
-      console.log(savedProduct);
       return savedProduct;
     } catch (error) {}
+  }
+
+  async findProduct(productId) {
+    return await this.produtoRepository.findOneBy({ id: productId });
   }
 }
