@@ -44,4 +44,6 @@ export class ProdutoService {
   async findProduct(productId) {
     return await this.produtoRepository.findOneBy({ id: productId });
   }
+
+ 
 }

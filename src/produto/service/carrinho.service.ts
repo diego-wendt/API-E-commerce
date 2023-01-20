@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateCarrinhoDto } from '../dto/create-carrinho.dto';
+import { RemoveItemDto } from '../dto/remove-item.dto';
 import { CarrinhoEntity } from '../entities/carrinho.entity';
 import { ProdutoService } from './produto.service';
 
@@ -28,6 +29,22 @@ export class CarrinhoService {
       carrinho.cesta.push(produto);
     }
 
+    return await this.carrinhoRepository.save(carrinho);
+  }
+
+  async removeItem(updateCarrinho: RemoveItemDto) {
+    const carrinho = await this.carrinhoRepository.findOneOrFail({
+      where: { id: updateCarrinho.id },
+      relations: { cesta: true },
+    });
+
+    const itemToRemove = await this.produtoService.findProduct(
+      updateCarrinho.item,
+    );
+
+    carrinho.cesta = carrinho.cesta.filter(
+      (item) => item.id != itemToRemove.id,
+    );
     return await this.carrinhoRepository.save(carrinho);
   }
 }
